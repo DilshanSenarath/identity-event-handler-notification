@@ -136,9 +136,11 @@ public class PushNotificationHandler extends DefaultNotificationHandler {
                 }
             }
         } catch (NotificationSenderManagementException e) {
+            LOG.debug("Error while retrieving Push Sender.", e);
             throw new IdentityEventException("Error while retrieving SMS Sender: "
                     + NotificationSenderManagementConstants.DEFAULT_PUSH_PUBLISHER, e);
         } catch (PushProviderException e) {
+            LOG.debug("Error while sending Push Notification.", e);
             throw new IdentityEventException(e.getErrorCode(), e.getMessage(), e);
         }
     }
